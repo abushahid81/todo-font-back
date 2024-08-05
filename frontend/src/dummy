@@ -1,0 +1,131 @@
+// import React, { useState, useEffect } from 'react'
+// import axios from 'axios';
+// // import cors from 'cors'
+// import './TodoList.css'
+// import Button from 'react-bootstrap/Button';
+
+// const App = () => {
+//   const [todos, setTodos] = useState([]);
+//   // const [input, setInput] = useState('');
+//   const [email, setEmail] = useState("");
+//   const [name, setName] = useState("");
+//   const [id, setId] = useState("");
+
+
+//   useEffect(() => {
+
+//     getUsers();
+
+//   },[]);
+
+//   const getUsers = () => {
+//    axios.get('http://localhost:9595/users').then((res) => {
+//       // console.log(res)
+//       setTodos(res.data.data);
+//       // console.log(res);
+//     })
+//   }
+//   const handleCustomer = (e) => {
+//     e.preventDefault();
+
+ 
+
+//     if (id) {
+//       axios.put("http://localhost:9595/users", { id, name, email })
+//         .then((response) => {
+//           setName("");
+//           setEmail("");
+//           setId("");
+//           getUsers("");
+
+//         });
+
+//     }
+//     else {
+//       axios.post("http://localhost:9595/users", { id, name, email })
+//         .then((response) => {
+//           setName("");
+//           setEmail("");
+//           setId("");
+
+//         });
+//     }
+//   }
+//   return (
+//     <div className="todo-list">
+//       <h2>ToDo List</h2>
+//       <input type='text' value={name} onChange={(e) => setName(e.target.value)} />
+//       <input type='text' value={email} onChange={(e) => setEmail(e.target.value)} />
+//       <Button onClick={(e) => handleCustomer(todos)} variant="success" className='ms-3'>Add</Button>
+
+//       <ol className='mt-3'>
+//         {todos.map(item => (
+//           <li key={item.id}>
+//             ID: {item.id} | NAME:{item.name} | EMAIL:{item.email}
+//              <Button variant="primary" className='mt-2'>Edit</Button>
+//             <Button variant="danger" className='mt-2'>Delete</Button>
+//           </li>
+
+//         ))}
+//       </ol>
+//     </div>
+//   )
+// }
+
+// export default App
+
+
+// // src/TodoList.js
+// import React, { useState } from 'react';
+
+// function TodoList() {
+//   const [tasks, setTasks] = useState([]);
+//   const [task, setTask] = useState('');
+  
+
+//   const addTask = () => {
+//     if (task) {
+//       setTasks([...tasks, { text: task, completed: false }]);
+//       setTask('');
+//     }
+//   };
+
+//   const toggleTaskCompletion = (index) => {
+//     const newTasks = tasks.map((t, i) => 
+//       i === index ? { ...t, completed: !t.completed } : t
+//     );
+//     setTasks(newTasks);
+//   };
+
+//   const deleteTask = (index) => {
+//     setTasks(tasks.filter((_, i) => i !== index));
+//   };
+
+//   return (
+//     <div>
+//       <h1>Todo List</h1>
+//       <input
+//         type="text"
+//         value={task}
+//         onChange={(e) => setTask(e.target.value)}
+//         placeholder="Add a new task"
+//       />
+//       <button onClick={addTask}>Add Task</button>
+//       <ul>
+//         {tasks.map((t, index) => (
+//           <li key={index} style={{ textDecoration: t.completed ? 'line-through' : 'none' }}>
+//             <input
+//               type="checkbox"
+//               checked={t.completed}
+//               onChange={() => toggleTaskCompletion(index)}
+//             />
+//             {t.text}
+//             <button onClick={() => deleteTask(index)}>Delete</button>
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }
+
+// export default TodoList;
