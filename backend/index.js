@@ -16,7 +16,7 @@ app.use('/', homeRouter)
 app.use('/user', userRouter)
 
 
-const PORT = 9001
+const PORT = 4444
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}...`);
 })
