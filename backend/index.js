@@ -13,10 +13,10 @@ app.use(cors())
 app.use('/', homeRouter)
 
 
-app.use('/user', userRouter)
+app.use('/users', userRouter)
 
 
-const PORT = 4444
+const PORT = 5001
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}...`);
 })

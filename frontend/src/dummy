@@ -28,7 +28,7 @@
 //   const handleCustomer = (e) => {
 //     e.preventDefault();
 
- 
+
 
 //     if (id) {
 //       axios.put("http://localhost:9595/users", { id, name, email })
@@ -81,7 +81,7 @@
 // function TodoList() {
 //   const [tasks, setTasks] = useState([]);
 //   const [task, setTask] = useState('');
-  
+
 
 //   const addTask = () => {
 //     if (task) {
@@ -91,7 +91,7 @@
 //   };
 
 //   const toggleTaskCompletion = (index) => {
-//     const newTasks = tasks.map((t, i) => 
+//     const newTasks = tasks.map((t, i) =>
 //       i === index ? { ...t, completed: !t.completed } : t
 //     );
 //     setTasks(newTasks);
@@ -129,3 +129,101 @@
 // }
 
 // export default TodoList;
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+// // import { Button } from 'react-bootstrap';
+
+// function App() {
+//     const [todos, setTodos] = useState([]);
+//     const [email, setEmail] = useState("");
+//     const [name, setName] = useState("");
+//     const [id, setId] = useState("");
+
+//     useEffect(() => {
+//         getUsers();
+//     }, []);
+
+//     const getUsers = async () => {
+//         try {
+//             const res = await axios.get("http://localhost:5556/users");
+//             setTodos(res.data.data);
+//             console.log("Users fetched successfully:", res.data.data);
+//         } catch (error) {
+//             console.error("There was an error fetching the users!", error);
+//         }
+//     };
+
+//     const handleUser = async (e) => {
+//         e.preventDefault();
+//         try {
+//             if (id) {
+//                 const response = await axios.put("http://localhost:5556/users", { id, name, email });
+//                 console.log("User updated successfully:", response.data.data);
+//             } else {
+//                 const response = await axios.post("http://localhost:5556/users", { name, email });
+//                 console.log("User created successfully:", response.data.data);
+//             }
+//             clearForm();
+//             getUsers();
+//         } catch (error) {
+//             console.error("There was an error saving the user!", error);
+//         }
+//     };
+
+//     const clearForm = () => {
+//         setName("");
+//         setEmail("");
+//         setId("");
+//     };
+
+//     const userData = (user) => {
+//         setEmail(user.email);
+//         setName(user.name);
+//         setId(user.id);
+//     };
+
+//     const handleDelete = async (userId) => {
+//         try {
+//             const response = await axios.delete(http://localhost:5556/users, {data: {id: userId}})
+//                 console.log("User deleted successfully:", response.data.data);
+//             getUsers();
+//         } catch (error) {
+//             console.error("There was an error deleting the user!", error);
+//         }
+//     };
+
+//     return (
+//         <div>
+//             <h1>To-Do List</h1>
+//             <form onSubmit={handleUser}>
+//                 <input
+//                     className='bg-black w-100'
+//                     type="text"
+//                     placeholder="Name"
+//                     value={name}
+//                     onChange={(e) => setName(e.target.value)}
+//                 />
+//                 <input
+//                     type="text"
+//                     placeholder="Email"
+//                     value={email}
+//                     onChange={(e) => setEmail(e.target.value)}
+//                 />
+//                 <button type="submit">
+//                     {id ? "Update" : "Add"}
+//                 </button>
+//             </form>
+//             <ul className='mt-3'>
+//                 {todos.map(data => (
+//                     <li key={data.id}>
+//                         ID: {data.id} | NAME: {data.name} | EMAIL: {data.email}
+//                         <button onClick={() => userData(data)}>edit</button>
+//                         <button onClick={() => handleDelete(data.id)}>delete</button>
+//                     </li>
+//                 ))}
+//             </ul>
+//         </div>
+//     );
+// }
+
+// export default App;
