@@ -20,69 +20,41 @@ const App = () => {
 
   }, []);
 
-  // const getUsers = async () => {
-  //   try {
-  //     const res = await axios.get("http://localhost:5001/users");
-  //     setTodos(res.data.data);
-  //     console.log("Users fetched successfully:", res.data.data);
-  //   } catch (error) {
-  //     console.error("There was an error fetching the users!", error);
-  //   }
-  // };
   const getUsers = () => {
     axios.get('http://localhost:5001/users')
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setTodos(res.data.data);
       })
 
   }
-  // const handleUser = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     if (id) {
-  //       const response = await axios.put("http://localhost:5001/users", { id, name, email });
-  //       console.log("User updated successfully:", response.data.data);
-  //     } else {
-  //       const response = await axios.post("http://localhost:5001/users", { name, email });
-  //       console.log("User created successfully:", response.data.data);
-  //     }
-  //     clearForm();
-  //     getUsers();
-  //   } catch (error) {
-  //     console.error("There was an error saving the user!", error);
-  //   }
-  // };
-  const handleCustomer = async (e) => {
+
+  const handleCustomer = (e) => {
     e.preventDefault();
-    try {
-      if (id) {
-        axios.put("http://localhost:5001/users", { id, name, email })
-          .then((response) => {
-            setName("");
-            setEmail("");
-            setId("");
-            getUsers("");
+
+    if (id) {
+      axios.put("http://localhost:5001/users", { id, name, email })
+        .then((response) => {
+          setName("");
+          setEmail("");
+          setId("");
+          getUsers("");
 
 
-          })
+        })
 
 
-      } else {
-        axios.post("http://localhost:5001/users", { id, name, email })
-          .then((response) => {
-            setName("");
-            setEmail("");
-            setId("");
-            getUsers("");
-            clearForm("");
+    } else {
+      axios.post("http://localhost:5001/users", { id, name, email })
+        .then((response) => {
+          setName("");
+          setEmail("");
+          setId("");
+          getUsers("");
+          clearForm("");
 
-          })
+        })
 
-      }
-
-    } catch (error) {
-      console.error("There was an error saving the user!", error);
     }
   }
 
@@ -119,16 +91,16 @@ const App = () => {
         <Button variant="success" type='submit' className='ms-3'>{id ? 'Update' : 'Add'}</Button>
       </form>
 
-      <ol className='mt-3'>
+      <ul className='mt-3'>
         {todos.map(data => (
-          <li key={data.id}>
+          <li key={data.id} className='db'>
             ID: {data.id} | NAME:{data.name} | EMAIL:{data.email}
-            <Button variant="primary" onClick={() => userform(data)} className='mt-2'>Edit</Button>
+            <Button variant="primary" onClick={() => userform(data)} className='mt-2 me-2'>Edit</Button>
             <Button variant="danger" onClick={() => handleDelete(data.id)} className='mt-2'>Delete</Button>
           </li>
 
         ))}
-      </ol>
+      </ul>
     </div>
   )
 }
