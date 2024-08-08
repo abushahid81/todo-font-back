@@ -1,12 +1,5 @@
 const home = (req, res) => {
-    res.end(
-        JSON.stringify({
-            code: 200,
-            remark: 'success',
-            data: null
-        })
-    )
+    res.send('<h1>Welcome to server</h1>')
 }
-
 
 export default { home };

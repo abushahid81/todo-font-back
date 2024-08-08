@@ -14,7 +14,7 @@ function read() {
 
 function write(data) {
     try {
-        const StoredWrite = JSON.stringify(data);
+        const jsonString = JSON.stringify(data);
         fs.writeFileSync('./db.json', jsonString, 'utf8');
         return;
     } catch (error) {
