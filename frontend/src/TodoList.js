@@ -84,10 +84,10 @@ const App = () => {
 
   return (
     <div className="todo-list">
-      <h2>ToDo List</h2>
+      <h2 className='ms-5'>To Do List</h2>
       <form onSubmit={handleCustomer}>
         <input type='text' placeholder='Username' className='gap-1' value={name} onChange={(e) => setName(e.target.value)} />
-        <input type='text' placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input type='text' placeholder='Email' className='gap-1' value={email} onChange={(e) => setEmail(e.target.value)} />
         <Button variant="success" type='submit' className='ms-3'>{id ? 'Update' : 'Add'}</Button>
       </form>
 
